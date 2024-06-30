@@ -4,9 +4,10 @@ import BlogPost from "../components/BlogPost";
 import { useBlog } from "../context/BlogContextProvider"; // Adjust the import path as necessary
 
 const PostsGrid = () => {
-  const { posts, setLastUpdated } = useBlog();
+  const { posts, setLastUpdated, isViewing, setIsViewing } = useBlog();
 
   const handleViewAllPosts = () => {
+    setIsViewing(false);
     setLastUpdated(Date.now());
   };
 
@@ -19,7 +20,7 @@ const PostsGrid = () => {
           </Grid>
         ))}
       </Grid>
-      {posts.length === 1 && (
+      {posts.length === 1 && isViewing && (
         <Button
           variant="contained"
           color="secondary"

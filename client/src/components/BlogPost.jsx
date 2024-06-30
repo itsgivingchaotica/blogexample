@@ -5,8 +5,13 @@ import { useBlog } from "../context/BlogContextProvider";
 import axios from "axios";
 
 const BlogPost = ({ post }) => {
-  const { editingPostId, setEditingPostId, setLastUpdated, setPosts } =
-    useBlog();
+  const {
+    editingPostId,
+    setEditingPostId,
+    setLastUpdated,
+    setPosts,
+    setIsViewing,
+  } = useBlog();
   const handleNewEdit = (id) => {
     setEditingPostId(id);
   };
@@ -16,6 +21,7 @@ const BlogPost = ({ post }) => {
       .get(`http://localhost:3000/api/posts/${id}`)
       .then((res) => {
         setPosts(res.data.post);
+        setIsViewing(true);
       })
       .catch((err) => console.error("Error fetching posts:", err));
   };

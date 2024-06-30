@@ -7,6 +7,7 @@ export const BlogProvider = ({ children }) => {
   const [editingPostId, setEditingPostId] = useState(false);
   const [posts, setPosts] = useState([]);
   const [lastUpdated, setLastUpdated] = useState(Date.now());
+  const [isViewing, setIsViewing] = useState(false);
 
   const handleEditPost = async (id, formData) => {
     await axios
@@ -37,6 +38,8 @@ export const BlogProvider = ({ children }) => {
         setPosts,
         lastUpdated,
         setLastUpdated,
+        setIsViewing,
+        isViewing,
       }}
     >
       {children}
