@@ -19,6 +19,7 @@ const EditPostForm = ({ post, isCreatingPost, setIsCreatingPost }) => {
   };
 
   const handleSubmit = (e) => {
+    e.preventDefault();
     if (post.id) {
       handleEditPost(post.id, formData);
       setEditingPostId(null);
